@@ -69,7 +69,10 @@
   }
 
   /* 電表儀表區 */
-  .meters{display:flex;gap:12px;flex-wrap:wrap;}
+  .meters{display:flex;flex-direction:column;gap:12px;}
+  @media (min-width:600px){
+    .meters{flex-direction:row;flex-wrap:wrap;}
+  }
   .meter{
     flex:1 1 220px;min-width:0;background:var(--panel-2);border:1px solid var(--line-soft);
     border-radius:8px;padding:14px 12px;
@@ -89,7 +92,10 @@
   .meter .date-note{margin-top:8px;font-size:11px;color:var(--muted);}
 
   /* 最新分攤結果 */
-  .split-summary{display:flex;gap:12px;flex-wrap:wrap;}
+  .split-summary{display:flex;flex-direction:column;gap:12px;}
+  @media (min-width:600px){
+    .split-summary{flex-direction:row;flex-wrap:wrap;}
+  }
   .split-box{
     flex:1 1 140px;min-width:0;background:var(--panel-2);border:1px solid var(--line-soft);
     border-radius:8px;padding:12px;
@@ -101,14 +107,18 @@
   .split-box.self .amount{color:var(--gold);}
 
   /* 表單 */
-  .form-grid{display:grid;grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));gap:18px 12px;}
+  .form-grid{display:grid;grid-template-columns:1fr;gap:18px;}
+  @media (min-width:600px){
+    .form-grid{grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));gap:18px 12px;}
+  }
   .form-grid .full{grid-column:1/-1;}
   label{display:block;font-size:11px;color:var(--muted);margin-bottom:6px;}
   input{
     width:100%;background:#0e0d0c;border:1px solid var(--line);
-    color:var(--text);border-radius:6px;padding:10px 10px;font-size:16px;
+    color:var(--text);border-radius:6px;padding:12px 10px;font-size:16px;
     font-variant-numeric: tabular-nums;
   }
+  input[type="date"]{min-height:44px;}
   input::placeholder{color:#5c574f;}
   input:focus{outline:none;border-color:var(--copper);box-shadow:0 0 0 2px rgba(217,138,61,.2);}
   .btn{
